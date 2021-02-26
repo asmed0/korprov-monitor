@@ -1,0 +1,15 @@
+{
+  "name": "teoriprov-monitor",
+  "version": "1.0.0",
+  "description": "monitor new times on fp.trafikverket.se",
+  "main": "teoriprov-monitor.js",
+  "scripts": {
+    "start": "node teoriprov-monitor",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ahmed soliman",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}

@@ -2,7 +2,7 @@
   "name": "teoriprov-monitor",
   "version": "1.0.0",
   "description": "monitor new times on fp.trafikverket.se",
-  "main": "teoriprov-monitor.js",
+  "main": "korprov-monitor.js",
   "scripts": {
     "start": "node teoriprov-monitor",
     "test": "echo \"Error: no test specified\" && exit 1"

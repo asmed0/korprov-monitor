@@ -1,5 +1,5 @@
 config = {
-	personnummer: '20011102-XXX', //needs to be with dash
+	personnummer: '20011102-XXXX', //needs to be with dash
 	stad: 'Vänersborg', //Needs to be exact
 	postnummer: '', //postcode of the postoffice, not ur personal
 	manuell: true, //set to false if you're doing automatic gearbox

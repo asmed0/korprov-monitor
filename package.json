@@ -4,7 +4,7 @@
   "description": "monitor new times on fp.trafikverket.se",
   "main": "korprov-monitor.js",
   "scripts": {
-    "start": "node teoriprov-monitor",
+    "start": "node korprov-monitor",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ahmed soliman",

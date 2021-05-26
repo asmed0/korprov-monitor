@@ -40,11 +40,11 @@ var startMonitor = async function () {
 				paymentUrl: null,
 			},
 			occasionBundleQuery: {
-				startDate: '2021-02-25T23:00:00.000Z',
+				startDate: '2021-05-25T23:00:00.000Z',
 				locationId: locationID,
 				nearbyLocationIds: [],
 				languageId: 13,
-				vehicleTypeId: (gearboxManual ? 2 : 4),
+				vehicleTypeId: gearboxManual ? 2 : 4,
 				tachographTypeId: 1,
 				occasionChoiceId: 1,
 				examinationTypeId: 12,
@@ -80,18 +80,18 @@ var startMonitor = async function () {
 			.then(function (response) {
 				//initialization
 				if (freshstart === true) {
-					initialAvailable = response.data.data[0].occasions[0].date;
-					start = response.data.data[0].occasions[0].date;
-					initialAvailableTime = response.data.data[0].occasions[0].time;
+					initialAvailable = response.data.data.bundles[0].occasions[0].date;
+					start = response.data.data.bundles[0].occasions[0].date;
+					initialAvailableTime = response.data.data.bundles[0].occasions[0].time;
 					freshstart = false;
 				} else if (
-					initialAvailable !== response.data.data[0].occasions[0].date &&
-					initialAvailableTime !== response.data.data[0].occasions[0].time &&
-					startValue !== response.data.data[0].occasions[0].date
+					initialAvailable !== response.data.data.bundles[0].occasions[0].date &&
+					initialAvailableTime !== response.data.data.bundles[0].occasions[0].time &&
+					startValue !== response.data.data.bundles[0].occasions[0].date
 				) {
 					var axios = require('axios');
 					var data = JSON.stringify({
-						content: `New time available on ${response.data.data[0].occasions[0].date} in ${response.data.data[0].occasions[0].locationName} at ${response.data.data[0].occasions[0].time}`,
+						content: `New time available on ${response.data.data.bundles[0].occasions[0].date} in ${response.data.data[0].occasions[0].locationName} at ${response.data.data[0].occasions[0].time}`,
 						embeds: null,
 					});
 
@@ -106,10 +106,14 @@ var startMonitor = async function () {
 					axios(config)
 						.then(
 							console.log(
-								`New time sent to webhook on ${response.data.data[0].occasions[0].date} in ${response.data.data[0].occasions[0].locationName} at ${response.data.data[0].occasions[0].time}`
+								`New time sent to webhook on ${
+									response.data.data.bundles[0].occasions[0].date
+								} in ${response.data.data.bundles[0].occasions[0].locationName} at ${
+									response.data.data.bundles[0].occasions[0].time
+								} for gearbox type ${gearboxManual ? 'manual' : 'automatic'}`
 							),
-							(initialAvailable = response.data.data[0].occasions[0].date),
-							(initialAvailableTime = response.data.data[0].occasions[0].time)
+							(initialAvailable = response.data.data.bundles[0].occasions[0].date),
+							(initialAvailableTime = response.data.data.bundles[0].occasions[0].time)
 						)
 						.catch(function (error) {
 							console.log(error);
